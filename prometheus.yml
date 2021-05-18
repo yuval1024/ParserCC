@@ -1,0 +1,12 @@
+# https://prometheus.io/docs/prometheus/latest/getting_started/
+# https://github.com/bitnami/bitnami-docker-prometheus#how-to-use-this-image
+
+scrape_configs:
+  - job_name:       'node'
+
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['localhost:9100']
+        labels:
+          group: 'local_machine'

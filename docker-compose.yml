@@ -1,0 +1,23 @@
+version: '2'
+
+# https://github.com/bitnami/bitnami-docker-prometheus/blob/master/docker-compose.yml
+# https://github.com/bitnami/bitnami-docker-grafana/blob/master/docker-compose.yml
+
+services:
+  prometheus:
+    image: docker.io/bitnami/prometheus:2
+    ports:
+      - '9090:9090'
+
+  # admin:bitnami
+  grafana:
+    image: docker.io/bitnami/grafana:7
+    ports:
+      - '3000:3000'
+    environment:
+      - 'GF_SECURITY_ADMIN_PASSWORD=bitnami'
+    volumes:
+      - grafana_data:/opt/bitnami/grafana/data
+volumes:
+  grafana_data:
+    driver: local
